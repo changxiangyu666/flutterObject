@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/pages/img_and_icon.dart';
+import 'package:myapp/pages/radio_check.dart';
 
 class HomeRoute extends StatefulWidget {
   @override
@@ -45,8 +46,13 @@ class _HomeRouteState extends State<HomeRoute> {
                   ),
                   //扁平按钮，默认背景透明并不带阴影。按下后，会有背景色
                   FlatButton(
-                    child: Text("normal"),
-                    onPressed: () {},
+                    child: Text("单选和复选"),
+                    onPressed: () {
+                      Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                        return SwitchAndCheckBoxTestRoute();
+                      }));
+                    },
                   ),
                   //默认有一个边框，不带阴影且背景透明。按下后，边框颜色会变亮、同时出现背景和阴影(较弱)
                   OutlineButton(
