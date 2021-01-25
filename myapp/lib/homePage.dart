@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/pages/form.dart';
 import 'package:myapp/pages/img_and_icon.dart';
+import 'package:myapp/pages/input_form.dart';
 import 'package:myapp/pages/radio_check.dart';
 
 class HomeRoute extends StatefulWidget {
@@ -57,20 +59,30 @@ class _HomeRouteState extends State<HomeRoute> {
                   //默认有一个边框，不带阴影且背景透明。按下后，边框颜色会变亮、同时出现背景和阴影(较弱)
                   OutlineButton(
                     child: Text(
-                      "normal",
+                      "输入框及表单",
                       style: TextStyle(
                         color: Colors.blue,
-                        fontSize: 18.0,
+                        fontSize: 14.0,
                       ),
                     ),
                     highlightedBorderColor: Colors.blue,
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                            return InputAndForm();
+                          }));
+                    },
                   ),
                   //RaisedButton、FlatButton、OutlineButton都有一个icon 构造函数，通过它可以创建带图标的按钮
                   RaisedButton.icon(
                     icon: Icon(Icons.send),
-                    label: Text("发送"),
-                    onPressed: () {},
+                    label: Text("login"),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                            return FormTestRoute();
+                          }));
+                    },
                   ),
                   FlatButton(
                     color: Colors.orangeAccent,

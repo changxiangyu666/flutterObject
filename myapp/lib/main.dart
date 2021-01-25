@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       initialRoute:"/", //8.名为"/"的路由作为应用的home(首页)
       //7.更改应用程序的主题
       theme: new ThemeData(
-        primaryColor: Colors.yellow,
+        primaryColor: Colors.green,
       ),
       //8.注册路由表
       routes:{
