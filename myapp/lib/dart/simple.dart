@@ -1,6 +1,47 @@
 // 定义一个函数
 printInteger(int aNumber) {
   print('The number is $aNumber.'); // 打印到控制台。
+
+  var name = 'Bob';
+//name 变量的类型被推断为 String 。 但是也可以通过指定类型的方式，来改变变量类型。
+// 如果对象不限定为单个类型，可以指定为 对象类型 或 动态类型
+
+  dynamic name1 = 'Bob';
+
+// 另一种方式是显式声明可以推断出的类型
+  String name2 = 'Bob';
+
+//未初始化的变量默认值是 null。即使变量是数字 类型默认值也是 null，因为在 Dart 中一切
+// 都是对象，数字类型 也不例外
+  int lineCount;
+  print(lineCount == null);
+
+//使用过程中从来不会被修改的变量， 可以使用 final 或 const,Final变量的值只能被设置一
+// 次； Const 变量在编译时就已经固定 (Const 变量 是隐式 Final 的类型.) 最高级 final
+// 变量或类变量在第一次使用时被初始化。
+  final name3 = 'Bob';
+  // name3 = 'Alice'; // Error: 一个 final 变量只能被设置一次。
+
+  // 如果需要在编译时就固定变量的值，可以使用 const 类型变量。如果 Const 变量是类级别
+  // 的，需要标记为 static const。 在这些地方可以使用在编译时就已经固定不变的值，字面
+  // 量的数字和字符串， 固定的变量，或者是用于计算的固定数字
+  const bar = 1000000; // 压力单位 (dynes/cm2)
+  const double atm = 1.01325 * bar; // 标准气压
+
+  //Const 关键字不仅可以用于声明常量变量。 还可以用来创建常量值，以及声明创建常量值的
+  // 构造函数。 任何变量都可以拥有常量值
+  var foo = const [];
+  final bar2 = const [];
+  //声明 const 的初始化表达式中 const 可以被省略
+  const baz = [];
+
+  //非 Final ， 非 const 的变量是可以被修改的，即使这些变量 曾经引用过 const 值
+  foo = [1, 2, 3];// 曾经引用过 const [] 常量值。
+
+//Const 变量的值不可以修改
+//   baz = [42];//// Error: 常量变量不能赋值修改
+
+
 }
 
 // 应用从这里开始执行。
