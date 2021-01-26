@@ -12,9 +12,9 @@ class _ImgState extends State<Img> {
   Widget build(BuildContext context) {
     var img = AssetImage("assets/images/1.png");
     String icons = "";
-    icons += "\uE914";// accessible: &#xE914; or 0xE914 or E914
-    icons += " \uE000";// error: &#xE000; or 0xE000 or E000
-    icons += " \uE90D";// fingerprint: &#xE90D; or 0xE90D or E90D`
+    icons += "\uE914"; // accessible: &#xE914; or 0xE914 or E914
+    icons += " \uE000"; // error: &#xE000; or 0xE000 or E000
+    icons += " \uE90D"; // fingerprint: &#xE90D; or 0xE90D or E90D`
     return new Scaffold(
         appBar: new AppBar(
           title: new Text(
@@ -28,8 +28,9 @@ class _ImgState extends State<Img> {
             "https://images1.1tu.com/uploads/2021-01/p_1611114142_0f07cbc7809a84bca87379a2bbeeb657.jpg",
             width: 1000,
           ),
-          Padding(padding: EdgeInsets.all(10.0),
-            child:Column(
+          Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Column(
               //测试Row对齐方式，排除Column默认居中对齐的干扰
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -60,7 +61,7 @@ class _ImgState extends State<Img> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 16.0),
-                  child:Row(
+                  child: Row(
                     //MainAxisAlignment.end表示沿textDirection的结尾方向对齐，
                     // 如textDirection取值为TextDirection.ltr时，则MainAxisAlignment.end表示右对齐，
                     // textDirection取值为TextDirection.rtl时表示从左对齐。MainAxisAlignment.end和MainAxisAlignment.start正好相反；
@@ -70,8 +71,11 @@ class _ImgState extends State<Img> {
                     //textDirection是mainAxisAlignment的参考系
                     textDirection: TextDirection.rtl,
                     children: <Widget>[
-                      Image(image:img,
-                          width: 160.0, height: 100, fit: BoxFit.fill),
+                      Image(
+                          image: img,
+                          width: 160.0,
+                          height: 100,
+                          fit: BoxFit.fill),
                       Column(
                         //表示子组件在纵轴方向的对齐方式 ，Row的高度等于子组件中最高的子元素高度
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -88,14 +92,17 @@ class _ImgState extends State<Img> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 16.0),
-                  child:Row(
+                  child: Row(
                     //表示Row在主轴(水平)方向占用的空间，默认是MainAxisSize.max
                     mainAxisSize: MainAxisSize.min,
                     //如果mainAxisSize值为MainAxisSize.min，则此属性无意义，因为子组件的宽度等于Row的宽度
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Image(image:img,
-                          width: 160.0, height: 100, fit: BoxFit.cover),
+                      Image(
+                          image: img,
+                          width: 160.0,
+                          height: 100,
+                          fit: BoxFit.cover),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
@@ -111,12 +118,15 @@ class _ImgState extends State<Img> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 16.0),
-                  child:Row(
+                  child: Row(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Image(image:img,
-                          width: 160.0, height: 100, fit: BoxFit.contain),
+                      Image(
+                          image: img,
+                          width: 160.0,
+                          height: 100,
+                          fit: BoxFit.contain),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
@@ -133,12 +143,15 @@ class _ImgState extends State<Img> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 16.0),
-                  child:Row(
+                  child: Row(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Image(image:img,
-                          width: 160.0, height: 100, fit: BoxFit.fitWidth),
+                      Image(
+                          image: img,
+                          width: 160.0,
+                          height: 100,
+                          fit: BoxFit.fitWidth),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
@@ -155,12 +168,15 @@ class _ImgState extends State<Img> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 16.0),
-                  child:Row(
+                  child: Row(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Image(image:img,
-                          width: 160.0, height: 100, fit: BoxFit.fitHeight),
+                      Image(
+                          image: img,
+                          width: 160.0,
+                          height: 100,
+                          fit: BoxFit.fitHeight),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
@@ -177,12 +193,15 @@ class _ImgState extends State<Img> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 16.0),
-                  child:Row(
+                  child: Row(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Image(image:img,
-                          width: 160.0, height: 100, fit: BoxFit.none),
+                      Image(
+                          image: img,
+                          width: 160.0,
+                          height: 100,
+                          fit: BoxFit.none),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
@@ -199,7 +218,7 @@ class _ImgState extends State<Img> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 16.0),
-                  child:Row(
+                  child: Row(
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -226,23 +245,34 @@ class _ImgState extends State<Img> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 16.0),
-                  child:Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  //流式布局
+                  child: Wrap(
                     children: <Widget>[
-                      Image.asset(
-                        "assets/images/2.png",
-                        width: 100.0,
-                        height: 200,
-                        repeat: ImageRepeat.repeatY ,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      //弹性布局
+                      Flex(
+                        direction: Axis.horizontal,
                         children: <Widget>[
-                          Text(" repeat:",
-                              style: TextStyle(color: Colors.green)),
-                          Text(" 当图片本身大小小于显示空间时， "),
-                          Text(" 指定图片的重复规则 "),
+                          Expanded(
+                            flex: 1,
+                            child: Image.asset(
+                              "assets/images/2.png",
+                              width: 100.0,
+                              height: 200,
+                              repeat: ImageRepeat.repeatY,
+                            ),
+                          ),
+                          Expanded(
+                            flex: 2,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(" repeat:",
+                                    style: TextStyle(color: Colors.green)),
+                                Text("""当图片本身大小小于显示空间时，指定图片的重复规则
+                                """),
+                              ],
+                            )
+                          ),
                         ],
                       )
                     ],
@@ -253,28 +283,43 @@ class _ImgState extends State<Img> {
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text(icons,
+                    Text(
+                      icons,
                       style: TextStyle(
                           fontFamily: "MaterialIcons",
                           fontSize: 24.0,
-                          color: Colors.green
-                      ),
+                          color: Colors.green),
                     ),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Icon(Icons.accessible,color: Colors.green,),
-                    Icon(Icons.error,color: Colors.green,),
-                    Icon(Icons.fingerprint,color: Colors.green,),
+                    Icon(
+                      Icons.accessible,
+                      color: Colors.green,
+                    ),
+                    Icon(
+                      Icons.error,
+                      color: Colors.green,
+                    ),
+                    Icon(
+                      Icons.fingerprint,
+                      color: Colors.green,
+                    ),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Icon(MyIcons.users,color: Colors.purple,),
-                    Icon(MyIcons.chevrons_right,color: Colors.purple,),
+                    Icon(
+                      MyIcons.users,
+                      color: Colors.purple,
+                    ),
+                    Icon(
+                      MyIcons.chevrons_right,
+                      color: Colors.purple,
+                    ),
                   ],
                 ),
               ],
@@ -292,3 +337,19 @@ this.colorBlendMode, //混合模式
 this.fit,//缩放模式
 this.alignment = Alignment.center, //对齐方式
 this.repeat = ImageRepeat.noRepeat, //重复方式*/
+
+/*
+*超出屏幕显示范围会自动折行的布局称为流式布局
+*  Wrap({
+  ...
+  this.direction = Axis.horizontal,//排列方向，默认水平方向排列
+  this.alignment = WrapAlignment.start,//纵轴方向的对齐方式
+  this.spacing = 0.0,// 主轴(水平)方向间距
+  this.runAlignment = WrapAlignment.start,////子控件在纵轴上的对齐方式
+  this.runSpacing = 0.0,// 纵轴（垂直）方向间距
+  this.crossAxisAlignment = WrapCrossAlignment.start,//纵轴上子控件的对齐方式
+  this.textDirection,//textDirection水平方向上子控件的起始位置
+  this.verticalDirection = VerticalDirection.down,//垂直方向上子控件的其实位置
+  List<Widget> children = const <Widget>[],//要显示的子控件集合
+})
+* */
