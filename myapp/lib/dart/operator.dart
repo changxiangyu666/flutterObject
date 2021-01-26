@@ -169,4 +169,16 @@ main(){
   // demo5();
   // demo6();
   demo7();
+  var text;
+  dynamic urlString='https://baidui.com';
+  //如果 assert 语句中的布尔条件为 false ， 那么正常的程序执行流程会被中断
+  // assert 语句只在开发环境中有效， 在生产环境是无效的
+  assert(text != null);
+  // 确认 URL 是否是 https 类型。
+  assert(urlString.startsWith('https'));
+  //assert 的第二个参数可以为其添加一个字符串消息
+  assert(urlString.startsWith('https'),
+  'URL ($urlString) should start with "https".');
+  //assert 的第一个参数可以是解析为布尔值的任何表达式。 如果表达式结果为 true ，
+  // 则断言成功，并继续执行。 如果表达式结果为 false ， 则断言失败，并抛出异常
 }
