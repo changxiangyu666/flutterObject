@@ -66,3 +66,19 @@ class _FocusTestRouteState extends State<FocusTestRoute> {
         ));
   }
 }
+
+/*
+* Padding({
+  ...
+* EdgeInsetsGeometry是一个抽象类，开发中，我们一般都使用EdgeInsets，
+* 它是EdgeInsetsGeometry的一个子类，定义了一些设置补白的便捷方法
+* EdgeInsets提供的便捷方法：
+*   fromLTRB(double left, double top, double right, double bottom)：分别指定四个方向的补白。
+*   all(double value) : 所有方向均使用相同数值的补白。
+*   only({left, top, right ,bottom })：可以设置具体某个方向的补白(可以同时指定多个方向)。
+*   symmetric({ vertical, horizontal })：用于设置对称方向的补白，vertical指top和bottom，horizontal指left和right。
+  EdgeInsetsGeometry padding,
+  Widget child,
+})
+*
+* */
