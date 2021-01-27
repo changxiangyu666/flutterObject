@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/pages/cascade.dart';
+import 'package:myapp/pages/container.dart';
 import 'package:myapp/pages/form.dart';
 import 'package:myapp/pages/img_and_icon.dart';
 import 'package:myapp/pages/input_form.dart';
@@ -106,11 +107,16 @@ class _HomeRouteState extends State<HomeRoute> {
                     highlightColor: Colors.brown[700],
                     colorBrightness: Brightness.dark,
                     splashColor: Colors.grey,
-                    child: Text("Submit"),
+                    child: Text("容器类"),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.0),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                            return ContainerRoute();
+                          }));
+                    },
                   ),
                 ],
               ),
