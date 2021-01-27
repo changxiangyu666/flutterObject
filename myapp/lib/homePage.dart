@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/pages/cascade.dart';
 import 'package:myapp/pages/form.dart';
 import 'package:myapp/pages/img_and_icon.dart';
 import 'package:myapp/pages/input_form.dart';
@@ -46,16 +47,6 @@ class _HomeRouteState extends State<HomeRoute> {
                       }));
                     },
                   ),
-                  //扁平按钮，默认背景透明并不带阴影。按下后，会有背景色
-                  FlatButton(
-                    child: Text("单选和复选"),
-                    onPressed: () {
-                      Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                        return SwitchAndCheckBoxTestRoute();
-                      }));
-                    },
-                  ),
                   //默认有一个边框，不带阴影且背景透明。按下后，边框颜色会变亮、同时出现背景和阴影(较弱)
                   OutlineButton(
                     child: Text(
@@ -90,10 +81,25 @@ class _HomeRouteState extends State<HomeRoute> {
                     colorBrightness: Brightness.dark,
                     //保证按钮文字颜色为浅色
                     splashColor: Colors.grey,
-                    child: Text("Submit"),
+                    child: Text("层叠布局"),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0)),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                            return CascadeRoute();
+                          }));
+                    },
+                  ),
+                  //扁平按钮，默认背景透明并不带阴影。按下后，会有背景色
+                  FlatButton(
+                    child: Text("单选和复选"),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                            return SwitchAndCheckBoxTestRoute();
+                          }));
+                    },
                   ),
                   RaisedButton(
                     color: Colors.brown,
