@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/pages/cascade.dart';
 import 'package:myapp/pages/container.dart';
+import 'package:myapp/pages/custom_scroll_view.dart';
 import 'package:myapp/pages/form.dart';
 import 'package:myapp/pages/img_and_icon.dart';
 import 'package:myapp/pages/input_form.dart';
@@ -115,6 +116,41 @@ class _HomeRouteState extends State<HomeRoute> {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
                             return ContainerRoute();
+                          }));
+                    },
+                  ),
+                  RaisedButton(
+                    child: Text("CustomScrollView"),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                            return CustomScrollViewRoute();
+                          }));
+                    },
+                  ),
+                  OutlineButton(
+                    child: Text(
+                      "",
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 14.0,
+                      ),
+                    ),
+                    highlightedBorderColor: Colors.blue,
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                            return ;
+                          }));
+                    },
+                  ),
+                  RaisedButton.icon(
+                    icon: Icon(Icons.send),
+                    label: Text(""),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                            return ;
                           }));
                     },
                   ),
