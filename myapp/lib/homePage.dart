@@ -4,6 +4,7 @@ import 'package:myapp/pages/container.dart';
 import 'package:myapp/pages/custom_scroll_view.dart';
 import 'package:myapp/pages/form.dart';
 import 'package:myapp/pages/img_and_icon.dart';
+import 'package:myapp/pages/inherited_widget.dart';
 import 'package:myapp/pages/input_form.dart';
 import 'package:myapp/pages/radio_check.dart';
 import 'package:myapp/pages/scroll_controller.dart';
@@ -146,13 +147,28 @@ class _HomeRouteState extends State<HomeRoute> {
                           }));
                     },
                   ),
-                  RaisedButton.icon(
-                    icon: Icon(Icons.send),
-                    label: Text("返回拦截"),
+                  RaisedButton(
+                    child: Text("返回拦截"),
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
                             return WillPopScopeTestRoute();
+                          }));
+                    },
+                  ),
+                  RaisedButton(
+                    color: Colors.deepOrange,
+                    highlightColor: Colors.deepOrange[700],
+                    colorBrightness: Brightness.dark,
+                    splashColor: Colors.grey,
+                    child: Text("数据共享"),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                            return InheritedWidgetTestRoute();
                           }));
                     },
                   ),
