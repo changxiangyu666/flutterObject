@@ -6,6 +6,7 @@ import 'package:myapp/pages/form.dart';
 import 'package:myapp/pages/img_and_icon.dart';
 import 'package:myapp/pages/input_form.dart';
 import 'package:myapp/pages/radio_check.dart';
+import 'package:myapp/pages/scroll_controller.dart';
 
 class HomeRoute extends StatefulWidget {
   @override
@@ -130,7 +131,7 @@ class _HomeRouteState extends State<HomeRoute> {
                   ),
                   OutlineButton(
                     child: Text(
-                      "",
+                      "滚动监听及控制",
                       style: TextStyle(
                         color: Colors.blue,
                         fontSize: 14.0,
@@ -140,7 +141,7 @@ class _HomeRouteState extends State<HomeRoute> {
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
-                            return ;
+                            return ScrollControllerRoute();
                           }));
                     },
                   ),
