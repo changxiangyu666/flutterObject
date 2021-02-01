@@ -7,6 +7,7 @@ import 'package:myapp/pages/img_and_icon.dart';
 import 'package:myapp/pages/input_form.dart';
 import 'package:myapp/pages/radio_check.dart';
 import 'package:myapp/pages/scroll_controller.dart';
+import 'package:myapp/pages/will_pop_scope.dart';
 
 class HomeRoute extends StatefulWidget {
   @override
@@ -147,11 +148,11 @@ class _HomeRouteState extends State<HomeRoute> {
                   ),
                   RaisedButton.icon(
                     icon: Icon(Icons.send),
-                    label: Text(""),
+                    label: Text("返回拦截"),
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
-                            return ;
+                            return WillPopScopeTestRoute();
                           }));
                     },
                   ),
