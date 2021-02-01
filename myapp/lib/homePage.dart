@@ -8,6 +8,7 @@ import 'package:myapp/pages/inherited_widget.dart';
 import 'package:myapp/pages/input_form.dart';
 import 'package:myapp/pages/radio_check.dart';
 import 'package:myapp/pages/scroll_controller.dart';
+import 'package:myapp/pages/theme.dart';
 import 'package:myapp/pages/will_pop_scope.dart';
 
 class HomeRoute extends StatefulWidget {
@@ -169,6 +170,22 @@ class _HomeRouteState extends State<HomeRoute> {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
                             return InheritedWidgetTestRoute();
+                          }));
+                    },
+                  ),
+                  RaisedButton(
+                    color: Colors.deepOrange,
+                    highlightColor: Colors.deepOrange[700],
+                    colorBrightness: Brightness.dark,
+                    splashColor: Colors.grey,
+                    child: Text("主题"),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                            return ThemeTestRoute();
                           }));
                     },
                   ),
