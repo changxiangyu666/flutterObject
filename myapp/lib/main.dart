@@ -58,6 +58,13 @@ class RandomWordsState extends State<RandomWords> {
   //2.添加一个私有的变量增大字体
   final _biggerFont = const TextStyle(fontSize: 18.0);
 
+  //下划线
+  Widget divider1=Divider(color: Colors.blue,);
+  Widget divider2=Divider(color: Colors.green);
+  //表尾标记
+  static const loadingTag = "##loading##";
+  var _words = <String>[loadingTag];
+
   //3.构建显示单词对的ListView方法
   Widget _buildSuggestions(){
     return new ListView.builder(
@@ -80,6 +87,55 @@ class RandomWordsState extends State<RandomWords> {
           return _buildRow(_suggestions[index]);
         }
     );
+
+    //比ListView.builder多了一个separatorBuilder参数，该参数是一个分割器生成器
+    /*return ListView.separated(
+      itemCount: _words.length,
+      //列表项构造器
+      itemBuilder: (BuildContext context, int index) {
+        //如果到了表尾
+        if (_words[index] == loadingTag) {
+          //不足100条，继续获取数据
+          if (_words.length - 1 < 100) {
+            //获取数据
+            Future.delayed(Duration(seconds: 2)).then((e) {
+              _words.insertAll(_words.length - 1,
+                  //每次生成20个单词
+                  generateWordPairs().take(20).map((e) => e.asPascalCase).toList()
+              );
+              setState(() {
+                //重新构建列表
+              });
+            });
+            //加载时显示loading
+            return Container(
+              padding: const EdgeInsets.all(16.0),
+              alignment: Alignment.center,
+              child: SizedBox(
+                  width: 24.0,
+                  height: 24.0,
+                  child: CircularProgressIndicator(strokeWidth: 2.0)
+              ),
+            );
+          } else {
+            //已经加载了100条数据，不再获取数据。
+            return Container(
+                alignment: Alignment.center,
+                padding: EdgeInsets.all(16.0),
+                child: Text("没有更多了", style: TextStyle(color: Colors.grey),)
+            );
+          }
+        }
+        return ListTile(
+          title: Text(_words[index]),
+        );;
+      },
+      //分割器构造器
+      separatorBuilder: (BuildContext context, int index) {
+        return index%2==0?divider1:divider2;
+      },
+    );*/
+
   }
 
   //3.该函数在ListTile中显示每个新词对
@@ -173,5 +229,82 @@ class RandomWordsState extends State<RandomWords> {
       ),
     );
   }
+
 }
 
+/*
+* ListView({
+  ...
+  //可滚动widget公共参数
+* 滚动方向
+  Axis scrollDirection = Axis.vertical,
+* 是否按照阅读方向相反的方向滑动
+  bool reverse = false,
+* ScrollController的主要作用是控制滚动位置和监听滚动事件
+  ScrollController controller,
+* 是否使用widget树中默认的PrimaryScrollController
+  bool primary,
+* 决定可滚动Widget如何响应用户操作，默认情况下，Flutter会根据具体平台分别使用不同的
+* ScrollPhysics对象，应用不同的显示效果，如当滑动到边界时，继续拖动的话，在iOS上会出
+* 现弹性效果，而在Android上会出现微光效果
+  ScrollPhysics physics,
+  EdgeInsetsGeometry padding,
+
+  //ListView各个构造函数的共同参数
+* itemExtent：该参数如果不为null，则会强制children的”长度”为itemExtent的值；这里的
+* ”长度”是指滚动方向上子widget的长度，即如果滚动方向是垂直方向，则itemExtent代表子
+* widget的高度，如果滚动方向为水平方向，则itemExtent代表子widget的长度。在ListView
+* 中，指定itemExtent比让子widget自己决定自身长度会更高效
+  double itemExtent,
+* shrinkWrap：该属性表示是否根据子widget的总长度来设置ListView的长度，默认值为false。
+* 默认情况下，ListView的会在滚动方向尽可能多的占用空间。当ListView在一个无边界
+* (滚动方向上)的容器中时，shrinkWrap必须为true
+  bool shrinkWrap = false,
+* addAutomaticKeepAlives：该属性表示是否将列表项（子widget）包裹在AutomaticKeepAlive
+*  widget中；典型地，在一个懒加载列表中，如果将列表项包裹在AutomaticKeepAlive中，在该
+* 列表项滑出视口时该列表项不会被GC，它会使用KeepAliveNotification来保存其状态。如果列
+* 表项自己维护其KeepAlive状态，那么此参数必须置为false
+  bool addAutomaticKeepAlives = true,
+* addRepaintBoundaries：该属性表示是否将列表项（子widget）包裹在RepaintBoundary中。
+* 当可滚动widget滚动时，将列表项包裹在RepaintBoundary中可以避免列表项重绘，但是当列表
+* 项重绘的开销非常小（如一个颜色块，或者一个较短的文本）时，不添加RepaintBoundary反而
+* 会更高效。和addAutomaticKeepAlive一样，如果列表项自己维护其KeepAlive状态，那么此参
+* 数必须置为false
+  bool addRepaintBoundaries = true,
+  double cacheExtent,
+
+  //子widget列表
+  List<Widget> children = const <Widget>[],
+})
+* */
+
+/*
+*默认构造函数有一个children参数，它接受一个Widget列表（List）。这种方式适合只有少量的
+* 子widget的情况，因为这种方式需要将所有children都提前创建好（这需要做大量工作），而
+* 不是等到子widget真正显示的时候再创建
+*
+*ListView(
+  shrinkWrap: true,
+  padding: const EdgeInsets.all(20.0),
+  children: <Widget>[
+    const Text('I\'m dedicating every day to you'),
+    const Text('Domestic life was never quite my style'),
+  ],
+);
+* */
+
+/*
+*ListView.builder适合列表项比较多（或者无限）的情况，因为只有当子Widget真正显示的时候
+* 才会被创建
+*
+*ListView.builder({
+  // ListView公共参数已省略
+  ...
+* temBuilder：它是列表项的构建器，类型为IndexedWidgetBuilder，返回值为一个widget。
+* 当列表滚动到具体的index位置时，会调用该构建器构建列表项。
+  @required IndexedWidgetBuilder itemBuilder,
+* temCount：列表项的数量，如果为null，则为无限列表
+  int itemCount,
+  ...
+})
+* */
