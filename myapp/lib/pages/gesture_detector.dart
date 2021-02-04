@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'package:myapp/route/route.dart';
 
 class GestureDetectorRoute extends StatefulWidget {
   @override
@@ -106,9 +107,19 @@ class _GestureDetectorRouteState extends State<GestureDetectorRoute> {
             splashColor: Colors.grey,
             child: Text("GestureRecognizer"),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return _GestureRecognizerTestRoute();
-              }));
+              Navigator.push(
+                  context,
+                  PageRouteBuilder(
+                      transitionDuration:
+                          Duration(milliseconds: 500), //动画时间为500毫秒
+                      pageBuilder: (BuildContext context, Animation animation,
+                          Animation secondaryAnimation) {
+                        return new FadeTransition(
+                          //使用渐隐渐入过渡,
+                          opacity: animation,
+                          child: _GestureRecognizerTestRoute(),
+                        );
+                      }));
             },
           ),
           RaisedButton(
@@ -118,7 +129,7 @@ class _GestureDetectorRouteState extends State<GestureDetectorRoute> {
             splashColor: Colors.grey,
             child: Text("手势竞争"),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
+              Navigator.push(context, FadeRoute(builder: (context) {
                 return BothDirectionTestRoute();
               }));
             },
@@ -233,7 +244,7 @@ class _ScaleTestRouteState extends State<_ScaleTestRoute> {
         onScaleUpdate: (ScaleUpdateDetails details) {
           setState(() {
             //缩放倍数在0.8到10倍之间
-            _width=200*details.scale.clamp(.8, 10.0);
+            _width = 200 * details.scale.clamp(.8, 10.0);
           });
         },
       ),
@@ -243,7 +254,8 @@ class _ScaleTestRouteState extends State<_ScaleTestRoute> {
 
 class _GestureRecognizerTestRoute extends StatefulWidget {
   @override
-  _GestureRecognizerTestRouteState createState() => new _GestureRecognizerTestRouteState();
+  _GestureRecognizerTestRouteState createState() =>
+      new _GestureRecognizerTestRouteState();
 }
 
 class _GestureRecognizerTestRouteState
@@ -261,28 +273,22 @@ class _GestureRecognizerTestRouteState
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text.rich(
-          TextSpan(
-              children: [
-                TextSpan(text: "你好世界"),
-                TextSpan(
-                  text: "点我变色",
-                  style: TextStyle(
-                      fontSize: 30.0,
-                      color: _toggle ? Colors.blue : Colors.red
-                  ),
-                  //TextSpan有一个recognizer属性，它可以接收一个GestureRecognizer
-                  recognizer: _tapGestureRecognizer
-                    ..onTap = () {
-                      setState(() {
-                        _toggle = !_toggle;
-                      });
-                    },
-                ),
-                TextSpan(text: "你好世界"),
-              ]
-          )
-      ),
+      child: Text.rich(TextSpan(children: [
+        TextSpan(text: "你好世界"),
+        TextSpan(
+          text: "点我变色",
+          style: TextStyle(
+              fontSize: 30.0, color: _toggle ? Colors.blue : Colors.red),
+          //TextSpan有一个recognizer属性，它可以接收一个GestureRecognizer
+          recognizer: _tapGestureRecognizer
+            ..onTap = () {
+              setState(() {
+                _toggle = !_toggle;
+              });
+            },
+        ),
+        TextSpan(text: "你好世界"),
+      ])),
     );
   }
 }
@@ -335,6 +341,7 @@ class GestureConflictTestRoute extends StatefulWidget {
 class GestureConflictTestRouteState extends State<GestureConflictTestRoute> {
   double _left = 0.0;
   double _leftB = 0.0;
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -342,26 +349,26 @@ class GestureConflictTestRouteState extends State<GestureConflictTestRoute> {
         Positioned(
           left: _left,
           child: GestureDetector(
-            child: CircleAvatar(child: Text("A")), //要拖动和点击的widget
+            child: CircleAvatar(child: Text("A")),
+            //要拖动和点击的widget
             onHorizontalDragUpdate: (DragUpdateDetails details) {
               setState(() {
                 _left += details.delta.dx;
               });
             },
-            onHorizontalDragEnd: (details){
+            onHorizontalDragEnd: (details) {
               print("onHorizontalDragEnd");
             },
-            onTapDown: (details){
+            onTapDown: (details) {
               print("down");
             },
-            onTapUp: (details){
+            onTapUp: (details) {
               print("up");
             },
           ),
         ),
-
         Positioned(
-          top:80.0,
+          top: 80.0,
           left: _leftB,
           child: Listener(
             onPointerDown: (details) {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/pages/animation.dart';
 import 'package:myapp/pages/cascade.dart';
 import 'package:myapp/pages/container.dart';
 import 'package:myapp/pages/custom_scroll_view.dart';
@@ -235,6 +236,19 @@ class _HomeRouteState extends State<HomeRoute> {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
                             return GestureDetectorRoute();
+                          }));
+                    },
+                  ),
+                  RaisedButton(
+                    color: Colors.lightGreen,
+                    highlightColor: Colors.lightGreen[700],
+                    colorBrightness: Brightness.dark,
+                    splashColor: Colors.grey,
+                    child: Text("动画"),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                            return ScaleAnimationRoute();
                           }));
                     },
                   ),
