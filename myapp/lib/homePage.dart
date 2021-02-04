@@ -4,6 +4,7 @@ import 'package:myapp/pages/container.dart';
 import 'package:myapp/pages/custom_scroll_view.dart';
 import 'package:myapp/pages/event_processing.dart';
 import 'package:myapp/pages/form.dart';
+import 'package:myapp/pages/gesture_detector.dart';
 import 'package:myapp/pages/img_and_icon.dart';
 import 'package:myapp/pages/inherited_widget.dart';
 import 'package:myapp/pages/input_form.dart';
@@ -164,9 +165,6 @@ class _HomeRouteState extends State<HomeRoute> {
                     colorBrightness: Brightness.dark,
                     splashColor: Colors.grey,
                     child: Text("数据共享"),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
@@ -175,14 +173,11 @@ class _HomeRouteState extends State<HomeRoute> {
                     },
                   ),
                   RaisedButton(
-                    color: Colors.deepOrange,
-                    highlightColor: Colors.deepOrange[700],
+                    color: Colors.deepOrangeAccent,
+                    highlightColor: Colors.deepOrangeAccent[700],
                     colorBrightness: Brightness.dark,
                     splashColor: Colors.grey,
                     child: Text("主题"),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
@@ -191,18 +186,54 @@ class _HomeRouteState extends State<HomeRoute> {
                     },
                   ),
                   RaisedButton(
-                    color: Colors.deepOrange,
-                    highlightColor: Colors.deepOrange[700],
+                    color: Colors.orange,
+                    highlightColor: Colors.orange[700],
                     colorBrightness: Brightness.dark,
                     splashColor: Colors.grey,
                     child: Text("事件处理"),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
                             return EventRoute();
+                          }));
+                    },
+                  ),
+                  RaisedButton(
+                    color: Colors.blueAccent,
+                    highlightColor: Colors.blueAccent[700],
+                    colorBrightness: Brightness.dark,
+                    splashColor: Colors.grey,
+                    child: Text("手势识别"),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                            return GestureDetectorRoute();
+                          }));
+                    },
+                  ),
+                  RaisedButton(
+                    color: Colors.lightBlueAccent,
+                    highlightColor: Colors.lightBlueAccent[700],
+                    colorBrightness: Brightness.dark,
+                    splashColor: Colors.grey,
+                    child: Text("手势识别"),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                            return ;
+                          }));
+                    },
+                  ),
+                  RaisedButton(
+                    color: Colors.green,
+                    highlightColor: Colors.green[700],
+                    colorBrightness: Brightness.dark,
+                    splashColor: Colors.grey,
+                    child: Text("手势识别"),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                            return GestureDetectorRoute();
                           }));
                     },
                   ),
