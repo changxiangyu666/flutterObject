@@ -6,6 +6,7 @@ import 'package:myapp/pages/custom_scroll_view.dart';
 import 'package:myapp/pages/event_processing.dart';
 import 'package:myapp/pages/form.dart';
 import 'package:myapp/pages/gesture_detector.dart';
+import 'package:myapp/pages/hero.dart';
 import 'package:myapp/pages/img_and_icon.dart';
 import 'package:myapp/pages/inherited_widget.dart';
 import 'package:myapp/pages/input_form.dart';
@@ -249,6 +250,19 @@ class _HomeRouteState extends State<HomeRoute> {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
                             return ScaleAnimationRoute();
+                          }));
+                    },
+                  ),
+                  RaisedButton(
+                    color: Colors.greenAccent,
+                    highlightColor: Colors.greenAccent[700],
+                    colorBrightness: Brightness.dark,
+                    splashColor: Colors.grey,
+                    child: Text("Hero动画"),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                            return HeroAnimationRoute();
                           }));
                     },
                   ),
