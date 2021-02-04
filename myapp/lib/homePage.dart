@@ -8,6 +8,7 @@ import 'package:myapp/pages/gesture_detector.dart';
 import 'package:myapp/pages/img_and_icon.dart';
 import 'package:myapp/pages/inherited_widget.dart';
 import 'package:myapp/pages/input_form.dart';
+import 'package:myapp/pages/notification.dart';
 import 'package:myapp/pages/radio_check.dart';
 import 'package:myapp/pages/scroll_controller.dart';
 import 'package:myapp/pages/theme.dart';
@@ -216,11 +217,11 @@ class _HomeRouteState extends State<HomeRoute> {
                     highlightColor: Colors.lightBlueAccent[700],
                     colorBrightness: Brightness.dark,
                     splashColor: Colors.grey,
-                    child: Text("手势识别"),
+                    child: Text("通知"),
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
-                            return ;
+                            return NotificationRoute();
                           }));
                     },
                   ),
