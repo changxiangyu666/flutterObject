@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp/pages/cascade.dart';
 import 'package:myapp/pages/container.dart';
 import 'package:myapp/pages/custom_scroll_view.dart';
+import 'package:myapp/pages/event_processing.dart';
 import 'package:myapp/pages/form.dart';
 import 'package:myapp/pages/img_and_icon.dart';
 import 'package:myapp/pages/inherited_widget.dart';
@@ -186,6 +187,22 @@ class _HomeRouteState extends State<HomeRoute> {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
                             return ThemeTestRoute();
+                          }));
+                    },
+                  ),
+                  RaisedButton(
+                    color: Colors.deepOrange,
+                    highlightColor: Colors.deepOrange[700],
+                    colorBrightness: Brightness.dark,
+                    splashColor: Colors.grey,
+                    child: Text("事件处理"),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0),
+                    ),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                            return EventRoute();
                           }));
                     },
                   ),
