@@ -4,6 +4,7 @@ import 'package:myapp/pages/animation1.dart';
 import 'package:myapp/pages/cascade.dart';
 import 'package:myapp/pages/container.dart';
 import 'package:myapp/pages/custom.dart';
+import 'package:myapp/pages/custom_paint.dart';
 import 'package:myapp/pages/custom_scroll_view.dart';
 import 'package:myapp/pages/event_processing.dart';
 import 'package:myapp/pages/form.dart';
@@ -279,6 +280,7 @@ class _HomeRouteState extends State<HomeRoute> {
                   RaisedButton(
                     color: Colors.purpleAccent,
                     highlightColor: Colors.purpleAccent[700],
+                    colorBrightness: Brightness.dark,
                     child: Text("自定义按钮"),
                     onPressed: () {
                       Navigator.push(context,
@@ -290,11 +292,24 @@ class _HomeRouteState extends State<HomeRoute> {
                   RaisedButton(
                     color: Colors.deepPurpleAccent,
                     highlightColor: Colors.deepPurpleAccent[700],
+                    colorBrightness: Brightness.dark,
                     child: Text("TurnBox"),
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
                             return TurnBoxRoute();
+                          }));
+                    },
+                  ),
+                  RaisedButton(
+                    color: Colors.pink,
+                    highlightColor: Colors.pink[700],
+                    colorBrightness: Brightness.dark,
+                    child: Text("CustomPaont"),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                            return CustomPaintRoute();
                           }));
                     },
                   ),
