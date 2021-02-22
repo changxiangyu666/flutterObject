@@ -10,6 +10,7 @@ import 'package:myapp/pages/event_processing.dart';
 import 'package:myapp/pages/form.dart';
 import 'package:myapp/pages/gesture_detector.dart';
 import 'package:myapp/pages/hero.dart';
+import 'package:myapp/pages/http.dart';
 import 'package:myapp/pages/img_and_icon.dart';
 import 'package:myapp/pages/inherited_widget.dart';
 import 'package:myapp/pages/input_form.dart';
@@ -323,6 +324,18 @@ class _HomeRouteState extends State<HomeRoute> {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
                             return GradientCircularProgressRoute();
+                          }));
+                    },
+                  ),
+                  RaisedButton(
+                    color: Colors. amber,
+                    highlightColor: Colors.amber[700],
+                    colorBrightness: Brightness.dark,
+                    child: Text("Http请求"),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                            return HttpTestRoute();
                           }));
                     },
                   ),
