@@ -16,6 +16,7 @@ import 'package:myapp/pages/notification.dart';
 import 'package:myapp/pages/radio_check.dart';
 import 'package:myapp/pages/scroll_controller.dart';
 import 'package:myapp/pages/theme.dart';
+import 'package:myapp/pages/turnbox.dart';
 import 'package:myapp/pages/will_pop_scope.dart';
 
 class HomeRoute extends StatefulWidget {
@@ -283,6 +284,17 @@ class _HomeRouteState extends State<HomeRoute> {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
                             return GradientButtonRoute();
+                          }));
+                    },
+                  ),
+                  RaisedButton(
+                    color: Colors.deepPurpleAccent,
+                    highlightColor: Colors.deepPurpleAccent[700],
+                    child: Text("TurnBox"),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                            return TurnBoxRoute();
                           }));
                     },
                   ),
