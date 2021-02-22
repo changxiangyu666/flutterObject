@@ -26,7 +26,7 @@ class HeroAnimationRoute extends StatelessWidget {
                     appBar: AppBar(
                       title: Text("原图"),
                     ),
-                    body: HeroAnimationRouteB(),
+                    body: HeroAnimationRouteB(), 
                   ),
                 );
               })
