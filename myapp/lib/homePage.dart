@@ -14,6 +14,7 @@ import 'package:myapp/pages/img_and_icon.dart';
 import 'package:myapp/pages/inherited_widget.dart';
 import 'package:myapp/pages/input_form.dart';
 import 'package:myapp/pages/notification.dart';
+import 'package:myapp/pages/progress_bar.dart';
 import 'package:myapp/pages/radio_check.dart';
 import 'package:myapp/pages/scroll_controller.dart';
 import 'package:myapp/pages/theme.dart';
@@ -310,6 +311,18 @@ class _HomeRouteState extends State<HomeRoute> {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
                             return CustomPaintRoute();
+                          }));
+                    },
+                  ),
+                  RaisedButton(
+                    color: Colors. blueGrey,
+                    highlightColor: Colors.blueGrey[700],
+                    colorBrightness: Brightness.dark,
+                    child: Text("渐变进度条"),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                            return GradientCircularProgressRoute();
                           }));
                     },
                   ),
