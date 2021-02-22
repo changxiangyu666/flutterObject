@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/pages/animation.dart';
+import 'package:myapp/pages/animation1.dart';
 import 'package:myapp/pages/cascade.dart';
 import 'package:myapp/pages/container.dart';
 import 'package:myapp/pages/custom_scroll_view.dart';
@@ -215,7 +216,7 @@ class _HomeRouteState extends State<HomeRoute> {
                     },
                   ),
                   RaisedButton(
-                    color: Colors.lightBlueAccent,
+                    color: Colors.lightBlueAccent[400],
                     highlightColor: Colors.lightBlueAccent[700],
                     colorBrightness: Brightness.dark,
                     splashColor: Colors.grey,
@@ -243,8 +244,6 @@ class _HomeRouteState extends State<HomeRoute> {
                   RaisedButton(
                     color: Colors.lightGreen,
                     highlightColor: Colors.lightGreen[700],
-                    colorBrightness: Brightness.dark,
-                    splashColor: Colors.grey,
                     child: Text("动画"),
                     onPressed: () {
                       Navigator.push(context,
@@ -256,13 +255,22 @@ class _HomeRouteState extends State<HomeRoute> {
                   RaisedButton(
                     color: Colors.greenAccent,
                     highlightColor: Colors.greenAccent[700],
-                    colorBrightness: Brightness.dark,
-                    splashColor: Colors.grey,
                     child: Text("Hero动画"),
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
                             return HeroAnimationRoute();
+                          }));
+                    },
+                  ),
+                  RaisedButton(
+                    color: Colors.yellow,
+                    highlightColor: Colors.yellow[700],
+                    child: Text("交错动画"),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                            return StaggerDemo();
                           }));
                     },
                   ),
