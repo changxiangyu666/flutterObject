@@ -3,6 +3,7 @@ import 'package:myapp/pages/animation.dart';
 import 'package:myapp/pages/animation1.dart';
 import 'package:myapp/pages/cascade.dart';
 import 'package:myapp/pages/container.dart';
+import 'package:myapp/pages/custom.dart';
 import 'package:myapp/pages/custom_scroll_view.dart';
 import 'package:myapp/pages/event_processing.dart';
 import 'package:myapp/pages/form.dart';
@@ -271,6 +272,17 @@ class _HomeRouteState extends State<HomeRoute> {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
                             return StaggerDemo();
+                          }));
+                    },
+                  ),
+                  RaisedButton(
+                    color: Colors.purpleAccent,
+                    highlightColor: Colors.purpleAccent[700],
+                    child: Text("自定义按钮"),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                            return GradientButtonRoute();
                           }));
                     },
                   ),
