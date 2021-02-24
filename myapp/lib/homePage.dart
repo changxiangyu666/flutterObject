@@ -20,6 +20,7 @@ import 'package:myapp/pages/radio_check.dart';
 import 'package:myapp/pages/scroll_controller.dart';
 import 'package:myapp/pages/theme.dart';
 import 'package:myapp/pages/turnbox.dart';
+import 'package:myapp/pages/web_socket.dart';
 import 'package:myapp/pages/will_pop_scope.dart';
 
 class HomeRoute extends StatefulWidget {
@@ -336,6 +337,18 @@ class _HomeRouteState extends State<HomeRoute> {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
                             return HttpTestRoute();
+                          }));
+                    },
+                  ),
+                  RaisedButton(
+                    color: Colors. amber,
+                    highlightColor: Colors.amber[700],
+                    colorBrightness: Brightness.dark,
+                    child: Text("WebSocket"),
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                            return WebSocketRoute();
                           }));
                     },
                   ),

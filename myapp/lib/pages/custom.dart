@@ -62,7 +62,7 @@ class GradientButtonRoute extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: new Text(
-          '交错动画',
+          '自定义按钮',
           style: Theme.of(context).primaryTextTheme.title,
         ),
       ),

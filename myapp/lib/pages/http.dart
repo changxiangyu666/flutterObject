@@ -56,9 +56,10 @@ class _HttpTestRouteState extends State<HttpTestRoute> {
                     //关闭client后，通过该client发起的所有请求都会中止。
                     httpClient.close();
 
-                    /*Dio dio = new Dio();
-                    Response response = await dio.get("http://www.baidu.com");
-                    print(response);*/
+                   /* Dio dio = new Dio();
+                    Response response = await dio.get("https://www.baidu.com");
+                    print(response.data);
+                    _text = await response.headers.toString();*/
 
                   } catch (e) {
                     _text = "请求失败：$e";
