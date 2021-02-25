@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
+import 'package:myapp/views/contact.dart';
+import 'package:myapp/views/found.dart';
+import 'package:myapp/views/member.dart';
+import 'package:myapp/views/weixin.dart';
 import './route/route.dart';
 import 'homePage.dart';
 
@@ -64,6 +68,35 @@ class RandomWordsState extends State<RandomWords> {
   //表尾标记
   static const loadingTag = "##loading##";
   var _words = <String>[loadingTag];
+
+
+  List<BottomNavigationBarItem> _items = [
+    BottomNavigationBarItem(
+        icon: Icon(Icons.chat_bubble),
+        title: Text('微信')
+    ),
+    BottomNavigationBarItem(
+        icon: Icon(Icons.group),
+        title: Text('通讯录')
+    ),
+    BottomNavigationBarItem(
+        icon: Icon(Icons.directions),
+        title: Text('发现')
+    ),
+    BottomNavigationBarItem(
+        icon: Icon(Icons.person_outline),
+        title: Text('我的')
+    )
+  ];
+
+  int _currentIndex = 0;
+
+  List<Widget> _pages = [
+    WeixinPage(),
+    FoundPage(),
+    MemberPage(),
+    ContactPage()
+  ];
 
   //3.构建显示单词对的ListView方法
   Widget _buildSuggestions(){
@@ -192,6 +225,21 @@ class RandomWordsState extends State<RandomWords> {
         ],
       ),
       body: _buildSuggestions(),
+      // body: IndexedStack(
+      //   index: _currentIndex,
+      //   children: _pages,
+      // ),
+      //底部导航栏，也就是tab栏
+      bottomNavigationBar: BottomNavigationBar(
+        type:BottomNavigationBarType.fixed,
+        items: _items,
+        currentIndex: _currentIndex,
+        onTap: (index){
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+      ),
     );
   }
 
