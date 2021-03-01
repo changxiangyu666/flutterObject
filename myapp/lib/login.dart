@@ -2,8 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'main.dart';
-
 class LoginScreen extends StatefulWidget {
   @override
   State<LoginScreen> createState() {
@@ -22,8 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
   static TextEditingController _accountController = new TextEditingController();
 
   //监听密码输入框的文字变化
-  static TextEditingController _passwordController =
-      new TextEditingController();
+  static TextEditingController _passwordController = new TextEditingController();
 
 //用于路由（就是界面的跳转），当跳转的事件没有写在build里面时用到（我这里抽到了loginButton里面）
   static BuildContext context1;
@@ -59,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
      */
     return Theme(
       data: new ThemeData(
-          primaryColor: Colors.amber, hintColor: Colors.greenAccent),
+          primaryColor: Colors.amber, hintColor: Colors.deepPurpleAccent),
       child: new TextField(
         //键盘的样式
         keyboardType: TextInputType.text,
@@ -101,9 +98,9 @@ class _LoginScreenState extends State<LoginScreen> {
             //聚焦时才显示,颜色跟hintColor
             hintText: '请输入账号',
             //红色
-//            errorText: '输入错误',
+           // errorText: '输入错误',
             //红色，现在在输入框的左下角，跟errorText位置一样(优先显示errorText)
-//            helperText: 'acount',
+           // helperText: 'acount',
             //输入框内左侧，有聚焦，颜色跟primaryColor
             prefixIcon: Icon(Icons.person),
             //输入框左侧的widget（可是text、icon……）
@@ -112,9 +109,9 @@ class _LoginScreenState extends State<LoginScreen> {
               style: TextStyle(fontSize: 20, color: Colors.black),
             ),
             //输入框内右侧的widget
-            suffixIcon: Icon(Icons.account_circle),
+            // suffixIcon: Icon(Icons.account_circle),
 //            有聚焦显示颜色跟hintColor，显示在输入框的右边
-            suffixText: "后缀",
+//             suffixText: "后缀",
             contentPadding: EdgeInsets.all(5),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(21.11), //边框裁剪成11.11°角
@@ -183,7 +180,7 @@ class _LoginScreenState extends State<LoginScreen> {
           //输入框内右侧的widget
           suffixIcon: Icon(Icons.remove_red_eye),
           //聚焦时才显示颜色跟hintColor，显示在输入框的右边
-          suffixText: '后缀',
+          // suffixText: '后缀',
           contentPadding: EdgeInsets.all(5),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(21.11), //边框裁剪成11.11°角
@@ -211,14 +208,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
   //登录进行布局及“账号”、“密码”格式校验、弹窗的提示、路由（写在build里面太长了，抽出来）
   Widget loginButton = new Container(
-      margin: const EdgeInsets.only(left: 35, right: 35),
+      margin: const EdgeInsets.only(left: 35, right: 35,bottom: 35),
       //这个widget距离父控件左右35（还有个all就是距离左上右下四个方向）
       child: new SizedBox(
           //用来设置宽高，如直接使用RaisedButton则不能设置
-          height: 50,
+          height: 40,
           child: new RaisedButton(
               //一个凸起的材质矩形按钮
-              color: Colors.red,
+              color: Colors.lightBlueAccent,
               child: new Text(
                 '登录',
                 style: TextStyle(color: Colors.white, fontSize: 20),
@@ -279,14 +276,11 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     context1 = context;
     return Scaffold(
-        appBar: new AppBar(
-          title: new Text('登录'),
-        ),
         body: new ListView(
           children: [
             new Image.asset(
-              'assets/images/1.png',
-              width: 600,
+              'assets/images/4.png',
+              width: 800,
               height: 240,
               //cover(充满容器)、fill（充满父容器）、contain（总有宽或高跟父一样）、none(原图居中显示)、fitWidth（宽度跟父一样）、fitHeight（高度跟父一样）
               fit: BoxFit.contain,
