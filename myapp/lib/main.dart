@@ -6,6 +6,7 @@ import 'package:myapp/views/member.dart';
 import 'package:myapp/views/weixin.dart';
 import './route/route.dart';
 import 'homePage.dart';
+import 'login.dart';
 
 void main() => runApp(new MyApp());
 
@@ -36,19 +37,20 @@ class MyApp extends StatelessWidget {
       ),
       //8.注册路由表
       routes:{
-        "/":(context)=> new fotter(),
+        "/":(context)=> new LoginScreen(),
+        "/home":(context)=> new Fotter(),
         "menu":(context)=> HomeRoute(),
       } ,
     );
   }
 }
 
-class fotter extends StatefulWidget{
+class Fotter extends StatefulWidget{
   @override
   //2.创建State类
-  createState() => new FotterState();
+  State<StatefulWidget> createState() => new FotterState();
 }
-class FotterState extends State<fotter>{
+class FotterState extends State<Fotter>{
   List<BottomNavigationBarItem> _items = [
     BottomNavigationBarItem(
         icon: Icon(Icons.chat_bubble),
