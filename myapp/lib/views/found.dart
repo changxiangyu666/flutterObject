@@ -1,6 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'dart:io';
+
+import 'package:image_picker/image_picker.dart';
+import 'package:video_player/video_player.dart';
+
 class FoundPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -22,6 +27,66 @@ class UserOptions extends StatefulWidget {
 }
 
 class UserOptionsState extends State<UserOptions> {
+  File _image;
+  File _cameraImage;
+  File _video;
+  File _cameraVideo;
+
+  ImagePicker picker = ImagePicker();
+
+  VideoPlayerController _videoPlayerController;
+  VideoPlayerController _cameraVideoPlayerController;
+
+  // This funcion will helps you to pick and Image from Gallery
+  _pickImageFromGallery() async {
+    PickedFile pickedFile =
+    await picker.getImage(source: ImageSource.gallery, imageQuality: 50);
+
+    File image = File(pickedFile.path);
+
+    setState(() {
+      _image = image;
+    });
+  }
+
+  // This funcion will helps you to pick and Image from Camera
+  _pickImageFromCamera() async {
+    PickedFile pickedFile =
+    await picker.getImage(source: ImageSource.camera, imageQuality: 50);
+
+    File image = File(pickedFile.path);
+
+    setState(() {
+      _cameraImage = image;
+    });
+  }
+
+  // This funcion will helps you to pick a Video File
+  _pickVideo() async {
+    PickedFile pickedFile = await picker.getVideo(source: ImageSource.gallery);
+
+    _video = File(pickedFile.path);
+
+    _videoPlayerController = VideoPlayerController.file(_video)
+      ..initialize().then((_) {
+        setState(() {});
+        _videoPlayerController.play();
+      });
+  }
+
+  // This funcion will helps you to pick a Video File from Camera
+  _pickVideoFromCamera() async {
+    PickedFile pickedFile = await picker.getVideo(source: ImageSource.camera);
+
+    _cameraVideo = File(pickedFile.path);
+
+    _cameraVideoPlayerController = VideoPlayerController.file(_cameraVideo)
+      ..initialize().then((_) {
+        setState(() {});
+        _cameraVideoPlayerController.play();
+      });
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -38,27 +103,31 @@ class UserOptionsState extends State<UserOptions> {
                         message: const Text('这里是消息'),
                         actions: <Widget>[
                           CupertinoActionSheetAction(
-                            child: const Text('🙋 Yes'),
+                            child: const Text('从文件选图片'),
                             onPressed: () {
-                              Navigator.pop(context, '🙋 Yes');
+                              _pickImageFromGallery();
+                              Navigator.pop(context, _image);
                             },
                           ),
                           CupertinoActionSheetAction(
-                            child: const Text('🙋 No'),
+                            child: const Text(' 照相机'),
                             onPressed: () {
-                              Navigator.pop(context, '🙋 No');
+                              _pickImageFromCamera();
+                              Navigator.pop(context, _cameraImage);
                             },
                           ),
                           CupertinoActionSheetAction(
-                            child: const Text("🙋 Can't say"),
+                            child: const Text("从文件选视频"),
                             onPressed: () {
-                              Navigator.pop(context, "🙋 Can't say");
+                              _pickVideo();
+                              Navigator.pop(context, _video);
                             },
                           ),
                           CupertinoActionSheetAction(
-                            child: const Text("🙋 Decide in next post"),
+                            child: const Text("摄像机"),
                             onPressed: () {
-                              Navigator.pop(context, "🙋 Decide in next post");
+                              _pickVideoFromCamera();
+                              Navigator.pop(context, _cameraVideo);
                             },
                           ),
                         ],
@@ -96,3 +165,5 @@ class UserOptionsState extends State<UserOptions> {
     });
   }
 }
+
+

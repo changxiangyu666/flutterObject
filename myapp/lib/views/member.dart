@@ -14,7 +14,7 @@ class MemberPage extends StatelessWidget {
   //轮播图控件，写在build的前面，Container创建矩形视觉元素，可对元素进行修饰eg:背景色、边框、边距、填充等
   static Widget swiperSection = new Container(
     //轮播图的高度
-    height: 140,
+    height: 180,
     //轮播图，还有其它的属性，这里不一一介绍了
     child: Swiper(
       //有多少个
