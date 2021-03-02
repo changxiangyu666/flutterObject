@@ -37,10 +37,40 @@ class UserOptionsState extends State<UserOptions> {
   VideoPlayerController _videoPlayerController;
   VideoPlayerController _cameraVideoPlayerController;
 
+  /*拍照*/
+  _takePhoto() async {
+    var image = await ImagePicker.pickImage(source: ImageSource.camera);
+
+    setState(() {
+      _image = image;
+    });
+  }
+
+  /*相册*/
+  _openGallery() async {
+    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    setState(() {
+      _image = image;
+    });
+  }
+
+  /*图片控件*/
+  Widget _ImageView(imgPath) {
+    if (imgPath == null) {
+      return Center(
+        child: Text("请选择图片或拍照"),
+      );
+    } else {
+      return Image.file(
+        imgPath,
+      );
+    }
+  }
+
   // This funcion will helps you to pick and Image from Gallery
   _pickImageFromGallery() async {
     PickedFile pickedFile =
-    await picker.getImage(source: ImageSource.gallery, imageQuality: 50);
+        await picker.getImage(source: ImageSource.gallery, imageQuality: 50);
 
     File image = File(pickedFile.path);
 
@@ -52,7 +82,7 @@ class UserOptionsState extends State<UserOptions> {
   // This funcion will helps you to pick and Image from Camera
   _pickImageFromCamera() async {
     PickedFile pickedFile =
-    await picker.getImage(source: ImageSource.camera, imageQuality: 50);
+        await picker.getImage(source: ImageSource.camera, imageQuality: 50);
 
     File image = File(pickedFile.path);
 
@@ -93,61 +123,66 @@ class UserOptionsState extends State<UserOptions> {
       body: new Builder(
         builder: (BuildContext context) {
           return Center(
-            child: RaisedButton(
-                child: Text('Like my Work ?'),
-                onPressed: () {
-                  containerForSheet<String>(
-                    context: context,
-                    child: CupertinoActionSheet(
-                        title: const Text('标题'),
-                        message: const Text('这里是消息'),
-                        actions: <Widget>[
-                          CupertinoActionSheetAction(
-                            child: const Text('从文件选图片'),
-                            onPressed: () {
-                              _pickImageFromGallery();
-                              Navigator.pop(context, _image);
-                            },
-                          ),
-                          CupertinoActionSheetAction(
-                            child: const Text(' 照相机'),
-                            onPressed: () {
-                              _pickImageFromCamera();
-                              Navigator.pop(context, _cameraImage);
-                            },
-                          ),
-                          CupertinoActionSheetAction(
-                            child: const Text("从文件选视频"),
-                            onPressed: () {
-                              _pickVideo();
-                              Navigator.pop(context, _video);
-                            },
-                          ),
-                          CupertinoActionSheetAction(
-                            child: const Text("摄像机"),
-                            onPressed: () {
-                              _pickVideoFromCamera();
-                              Navigator.pop(context, _cameraVideo);
-                            },
-                          ),
-                        ],
-                        cancelButton: CupertinoActionSheetAction(
-                          child: new Text(
-                            '取消',
-                            style: TextStyle(
-                              fontSize: 13.0,
-                              fontFamily: 'PingFangRegular',
-                              color: const Color(0xFF666666),
+              child: Column(
+            children: <Widget>[
+              RaisedButton(
+                  child: Text('Like my Work ?'),
+                  onPressed: () {
+                    containerForSheet<String>(
+                      context: context,
+                      child: CupertinoActionSheet(
+                          title: const Text('标题'),
+                          message: const Text('这里是消息'),
+                          actions: <Widget>[
+                            CupertinoActionSheetAction(
+                              child: const Text('从文件选图片'),
+                              onPressed: () {
+                                // _pickImageFromGallery();
+                                _openGallery();
+                                Navigator.pop(context, _image);
+                              },
                             ),
-                          ),
-                          isDefaultAction: true,
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                        )),
-                  );
-                }),
-          );
+                            CupertinoActionSheetAction(
+                              child: const Text(' 照相机'),
+                              onPressed: () {
+                                _pickImageFromCamera();
+                                Navigator.pop(context, _cameraImage);
+                              },
+                            ),
+                            CupertinoActionSheetAction(
+                              child: const Text("从文件选视频"),
+                              onPressed: () {
+                                _pickVideo();
+                                Navigator.pop(context, _video);
+                              },
+                            ),
+                            CupertinoActionSheetAction(
+                              child: const Text("摄像机"),
+                              onPressed: () {
+                                _pickVideoFromCamera();
+                                Navigator.pop(context, _cameraVideo);
+                              },
+                            ),
+                          ],
+                          cancelButton: CupertinoActionSheetAction(
+                            child: new Text(
+                              '取消',
+                              style: TextStyle(
+                                fontSize: 13.0,
+                                fontFamily: 'PingFangRegular',
+                                color: const Color(0xFF666666),
+                              ),
+                            ),
+                            isDefaultAction: true,
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          )),
+                    );
+                  }),
+              _ImageView(_image),
+            ],
+          ));
         },
       ),
     );
@@ -165,5 +200,3 @@ class UserOptionsState extends State<UserOptions> {
     });
   }
 }
-
-
