@@ -35,9 +35,10 @@ dependencies:
   http: ^0.12.2
   flutter_swiper: ^1.1.6  #轮播
   flutter_screenutil: ^4.0.3+2  #屏幕适配插件
-  image_picker : ^0.6.7+22  #适用于iOS和Android的Flutter插件
+  image_picker: ^0.6.7+22  #适用于iOS和Android的Flutter插件
   video_player: ^0.11.1+2
   asset_pickers: ^0.1.2  #资源选择
+  permission_handler: ^4.4.0 #权限插件
 
 
 dev_dependencies:
