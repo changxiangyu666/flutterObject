@@ -206,11 +206,15 @@ class _MyHomePageState extends State<MyHomePage> {
   VideoPlayerController _cameraVideoPlayerController;
   Future<void> _initializeVideoPlayerFuture;
 
+  @override
+  void initState() {
+    super.initState();
+  }
 
   // This funcion will helps you to pick and Image from Gallery
   _pickImageFromGallery() async {
     PickedFile pickedFile =
-    await picker.getImage(source: ImageSource.gallery, imageQuality: 50);
+        await picker.getImage(source: ImageSource.gallery, imageQuality: 50);
 
     File image = File(pickedFile.path);
     _imageFile.add(image);
@@ -222,7 +226,7 @@ class _MyHomePageState extends State<MyHomePage> {
   // This funcion will helps you to pick and Image from Camera
   _pickImageFromCamera() async {
     PickedFile pickedFile =
-    await picker.getImage(source: ImageSource.camera, imageQuality: 50);
+        await picker.getImage(source: ImageSource.camera, imageQuality: 50);
 
     File image = File(pickedFile.path);
     _imageFile.add(image);
@@ -272,10 +276,11 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: EdgeInsets.only(left: 16),
               alignment: Alignment.centerLeft,
               decoration: BoxDecoration(
-                border: Border(bottom: BorderSide(width: 1, color: Color(0xffe5e5e5)))
+                  border: Border(
+                      bottom: BorderSide(width: 1, color: Color(0xffe5e5e5)))
 //              border: Border.all(color: Colors.grey,width: 0.5),
 //              borderRadius: BorderRadius.circular(5),
-              ),
+                  ),
               child: Text('图片（六张）', style: TextStyle(color: Colors.green)),
             ),
             Wrap(
@@ -284,65 +289,65 @@ class _MyHomePageState extends State<MyHomePage> {
                 _imageFile.length == 0
                     ? Container()
                     : GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3,
-                        childAspectRatio: 1,
-                        mainAxisSpacing: 10,
-                        crossAxisSpacing: 10),
-                    padding: EdgeInsets.all(10),
-                    shrinkWrap: true,
-                    itemCount: _imageFile.length>6?6:_imageFile.length,
-                    // itemCount: _imageFile.length,
-                    itemBuilder: (BuildContext context, index) {
-                      return Wrap(
-                        // spacing: 8.0, // 主轴(水平)方向间距
-                        runSpacing: 4.0, // 纵轴（垂直）方向间距
-                        alignment: WrapAlignment.center, //沿主轴方向居中
-                        children: <Widget>[
-                          Image.file(
-                            _imageFile[index],
-                            height: 80,
-                            width: 80,
-                            fit: BoxFit.fill,
-                          ),
-                        ],
-
-                      );
-                    }),
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
+                            childAspectRatio: 1,
+                            mainAxisSpacing: 10,
+                            crossAxisSpacing: 10),
+                        padding: EdgeInsets.all(10),
+                        shrinkWrap: true,
+                        itemCount:
+                            _imageFile.length > 6 ? 6 : _imageFile.length,
+                        // itemCount: _imageFile.length,
+                        itemBuilder: (BuildContext context, index) {
+                          return Wrap(
+                            // spacing: 8.0, // 主轴(水平)方向间距
+                            runSpacing: 4.0, // 纵轴（垂直）方向间距
+                            alignment: WrapAlignment.center, //沿主轴方向居中
+                            children: <Widget>[
+                              Image.file(
+                                _imageFile[index],
+                                height: 80,
+                                width: 80,
+                                fit: BoxFit.fill,
+                              ),
+                            ],
+                          );
+                        }),
                 _imageFile.length >= 6
                     ? Container()
-                    :Container(
-                  margin: EdgeInsets.all(6),
-                  //容器外补白
-                  constraints: BoxConstraints.tightFor(width: 80.0, height: 80.0),
-                  //卡片大小
-                  decoration: BoxDecoration(
-                    //背景装饰
-                      gradient: RadialGradient(
-                        //背景径向渐变
-                          colors: [Color(0xfff6f6f6),Color(0xfff6f6f6)],
-                          center: Alignment.topLeft,
-                          radius: .6),
-                  ),
-                  alignment: Alignment.center,
-                  //卡片内文字居中
-                  child: FlatButton(
-                    height: 80,
-                    minWidth: 80,
-                    splashColor: Colors.grey,
-                    child: Icon(
-                      Icons.add,
-                      color: Color(0xffcacaca),
-                      size: 24.0,
-                    ),
-                    onPressed: _imgView,
-                  ),
-                ),
+                    : Container(
+                        margin: EdgeInsets.all(10),
+                        //容器外补白
+                        constraints:
+                            BoxConstraints.tightFor(width: 80.0, height: 80.0),
+                        //卡片大小
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(4.0),
+                          //背景装饰
+                          gradient: RadialGradient(
+                              //背景径向渐变
+                              colors: [Color(0xfff6f6f6), Color(0xfff6f6f6)],
+                              center: Alignment.topLeft),
+                        ),
+                        alignment: Alignment.center,
+                        //卡片内文字居中
+                        child: FlatButton(
+                          height: 80,
+                          minWidth: 80,
+                          splashColor: Colors.grey,
+                          child: Icon(
+                            Icons.add,
+                            color: Color(0xffcacaca),
+                            size: 24.0,
+                          ),
+                          onPressed: _imgView,
+                        ),
+                      ),
               ],
             ),
           ]),
         ),
-
         Card(
           child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
             Container(
@@ -351,75 +356,79 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: EdgeInsets.only(left: 16),
               alignment: Alignment.centerLeft,
               decoration: BoxDecoration(
-                  border: Border(bottom: BorderSide(width: 1, color: Color(0xffe5e5e5)))
+                  border: Border(
+                      bottom: BorderSide(width: 1, color: Color(0xffe5e5e5)))
 //              border: Border.all(color: Colors.grey,width: 0.5),
 //              borderRadius: BorderRadius.circular(5),
-              ),
-              child: Text('视频（六张）', style: TextStyle(color: Colors.green)),
-            ),
-            Wrap(
-              // mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-
-                _videoFile.length == 0
-                    ? Container()
-                    : GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3,
-                        childAspectRatio: 1,
-                        mainAxisSpacing: 10,
-                        crossAxisSpacing: 10),
-                    padding: EdgeInsets.all(10),
-                    shrinkWrap: true,
-                    itemCount: _videoFile.length>6?6:_videoFile.length,
-                    // itemCount: _imageFile.length,
-                    itemBuilder: (BuildContext context, index) {
-                      return Wrap(
-                        // spacing: 8.0, // 主轴(水平)方向间距
-                        runSpacing: 4.0, // 纵轴（垂直）方向间距
-                        alignment: WrapAlignment.center, //沿主轴方向居中
-                        children: <Widget>[
-                          Image.file(
-                            _videoFile[index],
-                            height: 80,
-                            width: 80,
-                            fit: BoxFit.fill,
-                          ),
-                        ],
-
-                      );
-                    }),
-                _videoFile.length >= 6
-                    ? Container()
-                    :Container(
-                  margin: EdgeInsets.all(6),
-                  //容器外补白
-                  constraints: BoxConstraints.tightFor(width: 80.0, height: 80.0),
-                  //卡片大小
-                  decoration: BoxDecoration(
-                    //背景装饰
-                    gradient: RadialGradient(
-                      //背景径向渐变
-                        colors: [Color(0xfff6f6f6),Color(0xfff6f6f6)],
-                        center: Alignment.topLeft,
-                        radius: .6),
                   ),
-                  alignment: Alignment.center,
-                  //卡片内文字居中
-                  child: FlatButton(
-                    height: 80,
-                    minWidth: 80,
-                    splashColor: Colors.grey,
-                    child: Icon(
-                      Icons.add,
-                      color: Color(0xffcacaca),
-                      size: 24.0,
-                    ),
-                    onPressed: _videoView,
+              child: Text('视频（三个）', style: TextStyle(color: Colors.green)),
+            ),
+            Row(children: <Widget>[
+              _videoFile.length == 0
+                  ? Container()
+                  : Expanded(
+                child: Container(
+                  alignment: Alignment.centerLeft,
+                  width: double.infinity,
+                  height: 100,
+                  padding: EdgeInsets.only(left: 10,top: 10,bottom: 10),
+                  child: ListView.builder(
+                    // controller: _controller,   //滚动条控制
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: this._videoFile.length,
+                    //循环_img渲染出listview
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        child: Container(
+                          width: 80,
+                          height: 80,
+                          margin: EdgeInsets.only(right: 10),
+                          decoration: BoxDecoration(
+                              borderRadius:
+                              BorderRadius.circular(4.0),
+                              border: Border.all(
+                                style: BorderStyle.solid,
+                                color: Colors.black26,
+                              )),
+                          child: VideoPlayer(VideoPlayerController.file(_videoFile[index])),
+                        ),
+                      );
+                    },
                   ),
                 ),
-              ],
-            ),
+              ),
+              _videoFile.length >= 3
+                  ? Container()
+                  : Container(
+                margin: EdgeInsets.all(10),
+                //容器外补白
+                constraints: BoxConstraints.tightFor(
+                    width: 80.0, height: 80.0),
+                //卡片大小
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(4.0),
+                  //背景装饰
+                  gradient: RadialGradient(
+                    //背景径向渐变
+                      colors: [Color(0xfff6f6f6), Color(0xfff6f6f6)],
+                      center: Alignment.topLeft,),
+                ),
+                alignment: Alignment.center,
+                //卡片内文字居中
+                child: FlatButton(
+                  height: 80,
+                  minWidth: 80,
+                  splashColor: Colors.grey,
+                  child: Icon(
+                    Icons.add,
+                    color: Color(0xffcacaca),
+                    size: 24.0,
+                  ),
+                  onPressed: _videoView,
+                ),
+              ),
+            ]),
           ]),
         ),
       ]),
@@ -437,6 +446,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ));
     });
   }
+
   _imgView() {
     containerForSheet<String>(
       context: context,
@@ -448,14 +458,18 @@ class _MyHomePageState extends State<MyHomePage> {
               child: const Text('从文件选图片'),
               onPressed: () {
                 _pickImageFromGallery();
-                Navigator.pop(context,);
+                Navigator.pop(
+                  context,
+                );
               },
             ),
             CupertinoActionSheetAction(
               child: const Text('拍照选择图片'),
               onPressed: () {
                 _pickImageFromCamera();
-                Navigator.pop(context,);
+                Navigator.pop(
+                  context,
+                );
               },
             ),
           ],
@@ -480,21 +494,25 @@ class _MyHomePageState extends State<MyHomePage> {
     containerForSheet<String>(
       context: context,
       child: CupertinoActionSheet(
-        // title: const Text('标题'),
-        // message: const Text('这里是消息'),
+          // title: const Text('标题'),
+          // message: const Text('这里是消息'),
           actions: <Widget>[
             CupertinoActionSheetAction(
               child: const Text("从文件选视频"),
               onPressed: () {
                 _pickVideo();
-                Navigator.pop(context,);
+                Navigator.pop(
+                  context,
+                );
               },
             ),
             CupertinoActionSheetAction(
               child: const Text("摄像机"),
               onPressed: () {
                 _pickVideoFromCamera();
-                Navigator.pop(context,);
+                Navigator.pop(
+                  context,
+                );
               },
             ),
           ],
@@ -514,6 +532,4 @@ class _MyHomePageState extends State<MyHomePage> {
           )),
     );
   }
-
 }
-
