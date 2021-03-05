@@ -215,10 +215,13 @@ class _LoginScreenState extends State<LoginScreen> {
           height: 40,
           child: new RaisedButton(
               //一个凸起的材质矩形按钮
-              color: Colors.lightBlueAccent,
+              color: Color(0xff3CB964),
               child: new Text(
                 '登录',
                 style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0),
               ),
               onPressed: () {
                 //按下时的事件
