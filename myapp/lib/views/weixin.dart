@@ -26,7 +26,7 @@ class RandomWordsState extends State<RandomWords> {
 
   //3.构建显示单词对的ListView方法
   Widget _buildSuggestions(){
-    return new ListView.builder(
+  /*  return new ListView.builder(
         padding: const EdgeInsets.all(16.0),
         // 对于每个建议的单词对都会调用一次itemBuilder，然后将单词对添加到ListTile行中
         // 在偶数行，该函数会为单词对添加一个ListTile row.
@@ -45,10 +45,10 @@ class RandomWordsState extends State<RandomWords> {
           }
           return _buildRow(_suggestions[index]);
         }
-    );
+    );*/
 
     //比ListView.builder多了一个separatorBuilder参数，该参数是一个分割器生成器
-    /*return ListView.separated(
+    return ListView.separated(
       itemCount: _words.length,
       //列表项构造器
       itemBuilder: (BuildContext context, int index) {
@@ -93,7 +93,7 @@ class RandomWordsState extends State<RandomWords> {
       separatorBuilder: (BuildContext context, int index) {
         return index%2==0?divider1:divider2;
       },
-    );*/
+    );
 
   }
 
